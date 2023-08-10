@@ -61,7 +61,7 @@ gcc *.c -o hsh
 - `1` or `2`: Incorrect usage of built-in commands.
 - `127`: Command not found.
 - Other non-zero values: Command-specific error.
-
+-
 ### Contributors :busts_in_silhouette:
 
 - [Abdeljalil37](https://github.com/Abdeljalil37)
