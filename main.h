@@ -14,6 +14,7 @@
 /* String functions prototypes */
 
 char *_strcpy(char *dest, char *src);
+char *_strncpy(char *dest, char *src, int n);
 char *_strdup(char *str);
 
 
