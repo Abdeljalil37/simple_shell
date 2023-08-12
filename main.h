@@ -10,4 +10,13 @@
 
 #define BUFSIZE 1024
 
+
+/* String functions prototypes */
+
+char *_strcpy(char *dest, char *src);
+char *_strdup(char *str);
+
+
+
+
 #endif
