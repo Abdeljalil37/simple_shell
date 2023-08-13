@@ -22,6 +22,7 @@ int _putchar(char c);
 void _puts(char *str);
 char *_strncat(char *dest, char *src, int n);
 
+int _strcmp(char *str1, char *str2);
 
 
 #endif
