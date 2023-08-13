@@ -23,6 +23,6 @@ void _puts(char *str);
 char *_strncat(char *dest, char *src, int n);
 
 int _strcmp(char *str1, char *str2);
-
+char **strtow(char *str);
 
 #endif
