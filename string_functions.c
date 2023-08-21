@@ -1,90 +1,106 @@
 #include "main.h"
 
 /**
- * _strcpy - copy string by pointer
- * @dest: parameter of function
- * @src: paramter of function
- * Return:dest
+ * _strcat - concatenate two strings
+ * @dest: char pointer the dest of the copied str
+ * @src: const char pointer the source of str
+ * Return: the dest
  */
+char *_strcat(char *dest, const char *src)
+{
+	int i;
+	int j;
 
+	for (i = 0; dest[i] != '\0'; i++)
+		;
+
+	for (j = 0; src[j] != '\0'; j++)
+	{
+		dest[i] = src[j];
+		i++;
+	}
+
+	dest[i] = '\0';
+	return (dest);
+}
+/**
+ * *_strcpy - Copies the string pointed to by src.
+ * @dest: Type char pointer the dest of the copied str
+ * @src: Type char pointer the source of str
+ * Return: the dest.
+ */
 char *_strcpy(char *dest, char *src)
 {
-	int len = 0, i;
 
-	while (src[len] != '\0')
-	{
-		len += 1;
-	}
-	for (i = 0; i < len; i += 1)
-	{
-		dest[i] = src[i];
-	}
-	dest[len] = '\0';
-	return (dest);
-}
+	size_t a;
 
-/**
- * *_strncpy - copy string with n number bytes
- * @dest: parametre destination
- * @src: parameter source
- * @n: parameter number
- * Return: value of new string
- */
-char *_strncpy(char *dest, char *src, int n)
-{
-	int len = 0;
-
-	while (src[len] != '\0' && len < n)
+	for (a = 0; src[a] != '\0'; a++)
 	{
-		dest[len] = src[len];
-		len += 1;
+		dest[a] = src[a];
 	}
-	while (len < n)
-	{
-		dest[len] = '\0';
-		len += 1;
-	}
+	dest[a] = '\0';
 
 	return (dest);
 }
-
 /**
- * _strdup - newly allocated space in memory
- * @str: parameter string to copy
- * Return:return a pointer
+ * _strcmp - Function that compares two strings.
+ * @s1: type str compared
+ * @s2: type str compared
+ * Return: Always 0.
  */
-char *_strdup(char *str)
+int _strcmp(char *s1, char *s2)
 {
-	int len;
-	char *ptr;
+	int i;
 
-	if (str == NULL)
-		return (NULL);
-	for (len = 0; str[len]; len += 1)
+	for (i = 0; s1[i] == s2[i] && s1[i]; i++)
 		;
-	ptr = malloc(len + 1);
-	if (ptr != NULL)
-	{
-		for (; len >= 0; len -= 1)
-			ptr[len] = str[len];
-	}
-	return (ptr);
+
+	if (s1[i] > s2[i])
+		return (1);
+	if (s1[i] < s2[i])
+		return (-1);
+	return (0);
 }
-
 /**
- * _strlen - function give the length of a string
- * @str: parameter of string to count
- *
- * Return: return value of str
+ * _strchr - locates a character in a string,
+ * @s: string.
+ * @c: character.
+ * Return: the pointer to the first occurrence of the character c.
  */
-int _strlen(char *str)
+char *_strchr(char *s, char c)
 {
-	int len = 0;
+	unsigned int i = 0;
 
-	while (*str != '\0')
+	for (; *(s + i) != '\0'; i++)
+		if (*(s + i) == c)
+			return (s + i);
+	if (*(s + i) == c)
+		return (s + i);
+	return ('\0');
+}
+/**
+ * _strspn - gets the length of a prefix substring.
+ * @s: initial segment.
+ * @accept: accepted bytes.
+ * Return: the number of accepted bytes.
+ */
+int _strspn(char *s, char *accept)
+{
+	int i, j, bool;
+
+	for (i = 0; *(s + i) != '\0'; i++)
 	{
-		len += 1;
-		str++;
+		bool = 1;
+		for (j = 0; *(accept + j) != '\0'; j++)
+		{
+			if (*(s + i) == *(accept + j))
+			{
+				bool = 0;
+				break;
+			}
+		}
+		if (bool == 1)
+			break;
 	}
-	return (len);
+	return (i);
 }
