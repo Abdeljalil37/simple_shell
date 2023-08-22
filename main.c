@@ -15,7 +15,7 @@ void free_data(data_shell *datash)
 		free(datash->_environ[i]);
 	}
 
-	free(datash->_environ);
+	free(datash->_envron);
 	free(datash->pid);
 }
 
@@ -35,7 +35,7 @@ void set_data(data_shell *datash, char **av)
 	datash->input = NULL;
 	datash->args = NULL;
 	datash->status = 0;
-	datash->counter = 1;
+	datash->conter = 1;
 
 	for (i = 0; environ[i]; i++)
 		;
@@ -51,3 +51,24 @@ void set_data(data_shell *datash, char **av)
 	datash->pid = aux_itoa(getpid());
 }
 
+/**
+ * main - Entry point
+ *
+ * @ac: argument count
+ * @av: argument vector
+ *
+ * Return: 0 on success.
+ */
+int main(int ac, char **av)
+{
+	data_shell datash;
+	(void) ac;
+
+	signal(SIGINT, get_sigint);
+	set_data(&datash, av);
+	shel_loop(&datash);
+	free_data(&datash);
+	if (datash.status < 0)
+		return (255);
+	return (datash.status);
+}
