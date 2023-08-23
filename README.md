@@ -1,67 +1,69 @@
-# **hsh** - Simple Shell :shell:
+# Simple Shell - hsh
 
-**hsh** is a simple UNIX command interpreter written as part of the low-level programming and algorithm track at ALX.
+## Introduction
 
-## Description :speech_balloon:
+The Simple Shell, named `hsh`, is a sh-compatible command interpreter created by Abdeljalil El Mouakkit and Yousri Rachid. It allows users to execute various Unix-like commands either interactively or from a script file.
 
-**hsh** is a basic UNIX command interpreter that reads and executes commands from either a file or standard input.
+## Table of Contents
 
-### Invocation :rocket:
+- [Introduction](#introduction)
+- [Usage](#usage)
+- [Features](#features)
+- [Command Execution](#command-execution)
+- [Environment](#environment)
+- [Exit Status](#exit-status)
+- [Built-in Commands](#built-in-commands)
+- [Authors](#authors)
 
-To use **hsh**, compile the `.c` files and run the resulting executable:
+## Usage
+
+To run the simple shell, you can use the following command:
 
 ```sh
-gcc *.c -o hsh
-./hsh
+$ ./hsh
 ```
 
-**hsh** can be invoked both interactively and non-interactively.
+You will then be presented with a prompt where you can enter commands to be executed.
 
-### Features :bulb:
+## Features
 
-- Command Execution: Run various shell commands.
-- Process Management: Launch and manage processes.
-- File System Navigation: Use `cd` command to navigate directories.
-- Redirection: Implement input and output redirection.
-- Piping: Chain commands using pipes (`|`).
+- Executes Unix-like commands
+- Supports basic shell syntax
+- Supports built-in commands
+- Handles environment variables
+- Provides exit status for commands
 
-### Getting Started
+## Command Execution
 
-1. Clone the repository: `git clone https://github.com/Abdeljalil37/simple_shell.git`
-2. Navigate to the project directory: `cd simple_shell`
-3. Compile the code: `gcc *.c -o hsh`
-4. Run the shell: `./hsh`
+The `hsh` shell processes commands by first splitting them into words, and then executing the command if it's recognized. If the command is not recognized, the shell searches for it in the list of built-in commands or tries to find an executable file in the directories listed in the `PATH` environment variable.
 
-### Usage :computer:
+## Environment
 
-- Run a command: `ls -l`
-- Navigate to a directory: `cd /path/to/directory`
-- Redirect output to a file: `ls > output.txt`
-- Chain commands using pipes: `ls -l | grep .txt`
+The `hsh` shell inherits the environment from the parent process (the shell from which it was executed). It supports environment variables in the format `name=value`. You can use built-in commands to manipulate the environment.
 
-### Built-in Commands :wrench:
+## Exit Status
 
-- `cd [DIRECTORY]`: Change the current directory.
-- `alias [NAME[='VALUE'] ...]`: Define or display aliases.
-- `exit [STATUS]`: Exit the shell with a specified status.
-- `env`: Display the current environment.
-- `setenv [VARIABLE] [VALUE]`: Initialize or modify an environment variable.
-- `unsetenv [VARIABLE]`: Remove an environment variable.
+The exit status of a command executed by `hsh` is the value returned by the `waitpid` system call. An exit status of 0 indicates success, while a non-zero exit status indicates failure. If a command is not found, the exit status is 127.
 
-### Environment :deciduous_tree:
+## Built-in Commands
 
-- `HOME`: Home directory of the user.
-- `PWD`: Current working directory.
-- `OLDPWD`: Previous working directory.
-- `PATH`: Colon-separated list of directories for command lookup.
+The following built-in commands are supported by the `hsh` shell:
 
-### Exit Status :wave:
+- `env`: Print the current environment
+- `setenv [Variable] [Value]`: Create or modify an environment variable
+- `unsetenv [Variable]`: Remove an environment variable
+- `exit [Status]`: Exit the shell
+- `cd [Directory]`: Change the current directory
+- `help`: Print help message for built-in commands
 
-- `0`: Success.
-- `1` or `2`: Incorrect usage of built-in commands.
-- `127`: Command not found.
-- Other non-zero values: Command-specific error.
--
+## Authors
+
+The Simple Shell (`hsh`) was developed by Abdeljalil El Mouakkit and Yousri Rachid.
+
+## References
+
+This shell takes inspiration from the basic functionality of the `sh` shell. The man page for `hsh` is based on the `bash(1)` man page.
+
 ### Contributors :busts_in_silhouette:
 
 - [Abdeljalil37](https://github.com/Abdeljalil37)
