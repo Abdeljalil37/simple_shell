@@ -60,9 +60,9 @@ void aux_help_general(void)
 	write(STDOUT_FILENO, help, _strlen(help));
 	help = "Type 'help name' to find out more about the function 'name'.\n\n ";
 	write(STDOUT_FILENO, help, _strlen(help));
-	help = " alias: alias [name=['string']]\n cd: cd [-L|[-P [-e]] [-@]] ";
+	help = " alias: alias [name=['string']]\n  cd: cd [-L|[-P [-e]] [-@]] ";
 	write(STDOUT_FILENO, help, _strlen(help));
-	help = "[dir]\nexit: exit [n]\n  env: env [option] [name=value] [command ";
+	help = "[dir]\n  exit: exit [n]\n  env: env [option] [name=value] [command ";
 	write(STDOUT_FILENO, help, _strlen(help));
 	help = "[args]]\n  setenv: setenv [variable] [value]\n  unsetenv: ";
 	write(STDOUT_FILENO, help, _strlen(help));
